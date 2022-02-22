@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+/x64/Debug
+/.vs/Cpp_Stack/v17/ipch/AutoPCH/ff57fe6700c6db68
+/.vs/Cpp_Stack/v17
