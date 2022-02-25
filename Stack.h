@@ -8,18 +8,11 @@ template <typename T, int max_size>
 class Stack
 {
 private:
-	// Main container
-	T m_arr[max_size - 1];
-	// -1 == no elements
-	int m_index = -1;
+	T m_arr[max_size - 1]; // Main container
+	int m_index = -1; // -1 == no elements
 
 public:
-	// -----------------------
-	// Constructors
 	Stack() {}
-
-	// -----------------------
-	// Destructors
 	~Stack() {}
 
 	// -----------------------
@@ -33,6 +26,11 @@ public:
 	bool isEmpty() const
 	{
 		return m_index == -1;
+	}
+
+	bool isFull() const
+	{
+		return elementsLeft() == max_size;
 	}
 
 	/* Add element to top of stack */
