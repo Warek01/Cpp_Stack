@@ -25,23 +25,21 @@ public:
 	// -----------------------
 	// Methods
 
-	int elementsLeft()
+	int elementsLeft() const
 	{
 		return m_index + 1;
 	}
 
-	bool hasElements()
+	bool isEmpty() const
 	{
-		return m_index >= 0;
+		return m_index == -1;
 	}
-	
+
 	/* Add element to top of stack */
 	Stack& add(T element)
 	{
 		assert(elementsLeft() != max_size && "Stack is full");
-
-		m_index++;
-		m_arr[m_index] = element;
+		m_arr[++m_index] = element;
 
 		return *this;
 	}
@@ -49,25 +47,23 @@ public:
 	/* Get the top element */
 	T get()
 	{
-		if (!hasElements()) return NULL;
-
-		T data = m_arr[m_index];
-
-		m_arr[m_index] = NULL;
+		assert(!isEmpty() && "Stack is empty");
 		m_index--;
-
-		return data;
+		return m_arr[m_index + 1];
 	}
 
 	/* Clear stack */
 	Stack& empty()
 	{
-		while (m_index > -1)
-		{
-			m_arr[m_index] = NULL;
-			m_index--;
-		}
-
+		m_index = -1;
 		return *this;
+	}
+
+	// -----------------------
+	// Operators
+
+	friend std::ostream& operator<<(std::ostream& out, const Stack<T, max_size>& stack)
+	{
+		return (out << stack.elementsLeft());
 	}
 };

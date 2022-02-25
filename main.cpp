@@ -2,16 +2,19 @@
 
 #include "Stack.h"
 
+struct Test
+{
+	int num;
+	char c;
+};
+
 int main()
 {
-	Stack<int, 10> stack;
+	Stack<Test, 10> stack;
 
-	stack.add(10).add(9);
+	stack.add(Test{1, 2}).add(Test{2, 3}).add(Test{4, 5});
 
-	stack.empty();
-	stack.add(1);
-
-	std::cout << stack.elementsLeft() << " " << stack.get() << "\n" << stack.get() << "\n" << stack.get() << "\n" << stack.get();
+	std::cout << stack.get().c << " " << stack;
 
 	return 0;
 }
